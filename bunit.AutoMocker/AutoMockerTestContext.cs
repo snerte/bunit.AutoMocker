@@ -1,7 +1,4 @@
-﻿using Bunit;
-using Moq.AutoMock;
-
-namespace Bunit.AutoMocker;
+﻿namespace Bunit.AutoMocker;
 
 public abstract class AutoMockerTestContext : TestContext
 {
