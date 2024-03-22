@@ -1,0 +1,48 @@
+name: main
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [synchronize, opened, reopened]
+  push:
+    branches:
+      - main
+
+env:
+  isMain: ${{ github.ref == 'refs/heads/main' }}
+
+jobs:
+  create_nuget:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || github.ref }}
+
+      - name: Use .NET 8.0.x
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+          
+      - name: Test
+        run: dotnet test
+
+      - name: Pack
+        run: dotnet pack --configuration Release --output ${{ runner.temp }}/nuget
+
+      - uses: actions/upload-artifact@v3
+        if: ${{ env.isMain == 'true' }}
+        with:
+          name: nuget
+          if-no-files-found: error
+          retention-days: 7
+          path: ${{ runner.temp }}/nuget/*.nupkg
+
+      - name: Publish NuGet package
+        if: ${{ env.isMain == 'true' }}
+        run: |
+          foreach($file in (Get-ChildItem ${{ runner.temp }}/nuget/ -Recurse -Include *.nupkg)) {
+              dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json
+          }
