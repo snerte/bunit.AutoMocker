@@ -1,7 +1,7 @@
 ﻿using Bunit;
 using Moq.AutoMock;
 
-namespace Snerte.bunit.AutoMocker;
+namespace Bunit.AutoMocker;
 
 public abstract class AutoMockerTestContext : TestContext
 {

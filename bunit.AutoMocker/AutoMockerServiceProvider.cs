@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Snerte.bunit.AutoMocker;
+namespace Bunit.AutoMocker;
 
 public class AutoMockerServiceProvider(Moq.AutoMock.AutoMocker mocker) : IServiceProvider
 {
