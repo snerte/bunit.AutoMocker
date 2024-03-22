@@ -43,6 +43,6 @@ jobs:
       - name: Publish NuGet package
         if: ${{ env.isMain == 'true' }}
         run: |
-          foreach($file in (Get-ChildItem ${{ runner.temp }}/nuget/ -Recurse -Include *.nupkg)) {
+          foreach($file in (Get-ChildItem "${{ runner.temp }}/nuget/" -Recurse -Include *.nupkg)) {
               dotnet nuget push $file --api-key "${{ secrets.NUGET_APIKEY }}" --source https://api.nuget.org/v3/index.json
           }
