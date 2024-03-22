@@ -2,9 +2,9 @@
 
 public abstract class AutoMockerTestContext : TestContext
 {
-    internal readonly Moq.AutoMock.AutoMocker Mocker;
+    protected readonly Moq.AutoMock.AutoMocker Mocker = new();
 
-    public AutoMockerTestContext() : this(new Moq.AutoMock.AutoMocker()) { }
+    public AutoMockerTestContext() : this(new Moq.AutoMock.AutoMocker(Moq.MockBehavior.Loose)) { }
 
     public AutoMockerTestContext(Moq.AutoMock.AutoMocker mocker)
     {
