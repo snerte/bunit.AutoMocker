@@ -2,10 +2,13 @@
 
 public abstract class AutoMockerTestContext : TestContext
 {
-    internal readonly Moq.AutoMock.AutoMocker _mocker = new();
+    internal readonly Moq.AutoMock.AutoMocker Mocker;
 
-    public AutoMockerTestContext()
+    public AutoMockerTestContext() : this(new Moq.AutoMock.AutoMocker()) { }
+
+    public AutoMockerTestContext(Moq.AutoMock.AutoMocker mocker)
     {
-        Services.AddFallbackServiceProvider(new AutoMockerServiceProvider(_mocker));
+        Mocker = mocker;
+        Services.AddFallbackServiceProvider(new AutoMockerServiceProvider(Mocker));
     }
 }
