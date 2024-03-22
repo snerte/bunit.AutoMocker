@@ -3,6 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <langversion>latest</langversion>
+    <PackageId>Snerte.bunit.AutoMocker</PackageId>
+    <Version>0.0.1</Version>
+    <Authors>Maarten Göertz</Authors>
+    <PackageDescription>This pacakge combines AutoMocker with bunit</PackageDescription>
+    <RepositoryUrl>https://github.com/snerte/bunit.AutoMocker</RepositoryUrl>
   </PropertyGroup>
 
 
@@ -11,7 +16,7 @@
 </PropertyGroup>
 
 <ItemGroup>
-  <PackageReference Include="bunit" Version="1.26.64" />
+  <PackageReference Include="bunit" Version="1.27.17" />
   <PackageReference Include="Moq.AutoMock" Version="3.5.0" />
 </ItemGroup>
 
