@@ -86,4 +86,23 @@ public class AutoMockerTestContextTests : AutoMockerTestContext
 }
 ```
 
+When a certain type should not be handled by AutoMocker, a list of types can be provided via the constructor to exclude:
+``` cs
+public class ExcludeTypesTests : AutoMockerTestContext
+{
+    public ExcludeTypesTests() : base(typeof(IMyOtherDependency))
+    { }
+
+    [Fact]
+    public void WhenUnregisteredDependencyIsNotHandledByAutoMocker_ThrowsInvalidOperationException()
+    {
+        // Arrange
+        Mocker.Use<IMydependency>(x => x.GetSomeValue() == "Hello World");
+
+        // Act & Assert
+        Assert.Throws<InvalidOperationException>(() => RenderComponent<Routes>());
+    }
+}
+```
+
 [0]:https://github.com/moq/Moq.AutoMocker

@@ -8,6 +8,7 @@
     <Authors>Maarten Göertz</Authors>
     <PackageDescription>This pacakge combines AutoMocker with bunit</PackageDescription>
     <RepositoryUrl>https://github.com/snerte/bunit.AutoMocker</RepositoryUrl>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
 
 
@@ -16,7 +17,7 @@
 </PropertyGroup>
 
 <ItemGroup>
-  <PackageReference Include="bunit" Version="1.26.64" />
+  <PackageReference Include="bunit" Version="1.40.0" />
   <PackageReference Include="Moq.AutoMock" Version="3.5.0" />
 </ItemGroup>
 
@@ -25,7 +26,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="../README.md" Pack="true" PackagePath=""/>
+    <None Include="../README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
 </Project>
