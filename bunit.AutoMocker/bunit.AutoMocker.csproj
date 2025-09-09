@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <langversion>latest</langversion>
     <PackageId>Snerte.bunit.AutoMocker</PackageId>
-    <Version>0.0.2</Version>
+    <Version>0.0.3</Version>
     <Authors>Maarten Göertz</Authors>
     <PackageDescription>This pacakge combines AutoMocker with bunit</PackageDescription>
     <RepositoryUrl>https://github.com/snerte/bunit.AutoMocker</RepositoryUrl>
