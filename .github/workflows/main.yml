@@ -32,7 +32,7 @@ jobs:
       - name: Pack
         run: dotnet pack --configuration Release --output ${{ runner.temp }}/nuget
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         if: ${{ env.isMain == 'true' }}
         with:
           name: nuget
