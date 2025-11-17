@@ -11,6 +11,10 @@ public class AutoMockerServiceProvider(Moq.AutoMock.AutoMocker mocker, params Ty
 
     public object? GetService(Type serviceType)
     {
+        // Never attempt to mock sealed classes
+        if (serviceType.IsSealed)
+            return null;
+
         return _typesToExclude.Contains(serviceType) 
             ? null 
             : _mocker.Get(serviceType);
